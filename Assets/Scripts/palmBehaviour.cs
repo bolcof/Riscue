@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class palmBehaviour : MonoBehaviour
 {
+
     public int GrowthLevel = 0;
     public int GrowthLevelMax = 4;
     public Sprite[] palmImage = new Sprite[5];
