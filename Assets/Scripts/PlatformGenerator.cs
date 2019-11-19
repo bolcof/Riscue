@@ -27,6 +27,8 @@ public class PlatformGenerator : MonoBehaviour
         //is our platformgenerator less than our platformgeneration point? (find difference)
         //if it is; create new platform where platformgeneration point is in scene 
 
+        Debug.Log("T: "+transform.position.x.ToString());
+        Debug.Log("G: "+generationPoint.position.x.ToString());
         //if x position of platform obj right now is less than generation point 
         if(transform.position.x < generationPoint.position.x){
 
