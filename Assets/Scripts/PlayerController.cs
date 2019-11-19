@@ -17,6 +17,8 @@ public class PlayerController : MonoBehaviour
 
     private Animator myAnimator; 
 
+    //public bool acornnum;
+
     void Start()
     {
         //grab Rigidbody2D component from Player 
@@ -62,6 +64,7 @@ public class PlayerController : MonoBehaviour
         if(other.gameObject.CompareTag("Acorn")){
             audioAcornCollect.Play(); 
             Destroy(other.gameObject); 
+
         }
     }
 }
