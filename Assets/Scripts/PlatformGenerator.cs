@@ -11,8 +11,8 @@ public class PlatformGenerator : MonoBehaviour
     private float platformWidth;  
 
     //Randomization distanceBetween variables 
-    private float distanceBetweenMin;
-    private float distanceBetweenMax; 
+    public float distanceBetweenMin;
+    public float distanceBetweenMax; 
     
     
     void Start()
@@ -29,6 +29,10 @@ public class PlatformGenerator : MonoBehaviour
 
         //if x position of platform obj right now is less than generation point 
         if(transform.position.x < generationPoint.position.x){
+
+            //randomize distance between platforms 
+            distanceBetween = Random.Range (distanceBetweenMin, distanceBetweenMax);
+
             //move transform ahead -> move x value ahead by our platformwidth and distanceBetween, then keep y and z values the same
             transform.position = new Vector3(transform.position.x + platformWidth + distanceBetween, transform.position.y, transform.position.z);
 
