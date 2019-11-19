@@ -411,7 +411,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PalmTree: {fileID: 5685997547644529599, guid: 5bccb1556df8f42348166447c742c409,
     type: 3}
-  tmpAcornNum: 1
+  tmpAcornNum: 2
 --- !u!50 &447816079
 Rigidbody2D:
   serializedVersion: 4
