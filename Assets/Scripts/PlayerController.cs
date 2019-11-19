@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
 
     public bool grounded;
     public LayerMask whatIsGround;
+    public int AcornNum;
 
     private Collider2D myCollider; 
 
@@ -29,6 +30,8 @@ public class PlayerController : MonoBehaviour
 
         //grab Animator component from Player 
         myAnimator = GetComponent<Animator>();
+
+        myAnimator.SetInteger("AcornNum", AcornNum);
 
     }
 
@@ -63,8 +66,9 @@ public class PlayerController : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other){
         if(other.gameObject.CompareTag("Acorn")){
             audioAcornCollect.Play(); 
-            Destroy(other.gameObject); 
-
+            Destroy(other.gameObject);
+            AcornNum++;
+            myAnimator.SetInteger("AcornNum", AcornNum);
         }
     }
 }

@@ -1775,6 +1775,7 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 256
+  AcornNum: 0
 --- !u!95 &1560192682
 Animator:
   serializedVersion: 3
