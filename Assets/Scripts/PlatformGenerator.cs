@@ -9,6 +9,10 @@ public class PlatformGenerator : MonoBehaviour
     public float distanceBetween; 
 
     private float platformWidth;  
+
+    //Randomization distanceBetween variables 
+    private float distanceBetweenMin;
+    private float distanceBetweenMax; 
     
     
     void Start()
@@ -16,7 +20,7 @@ public class PlatformGenerator : MonoBehaviour
         //set length of platform equal to our float 
         platformWidth = thePlatform.GetComponent<BoxCollider2D>().size.x; 
     }
-
+ 
     
     void Update()
     {
