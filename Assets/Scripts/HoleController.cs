@@ -21,11 +21,11 @@ public class HoleController : MonoBehaviour
         
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            if(tmpAcornNum >= 1)
+            if (tmpAcornNum >= 1)
             {
                 becomePlamTree();
             }
@@ -38,11 +38,14 @@ public class HoleController : MonoBehaviour
 
     public void becomePlamTree()
     {
-        Instantiate(PalmTree);
+        Instantiate(PalmTree, this.transform.position, Quaternion.identity);
         Destroy(this.gameObject);
+        Debug.Log("01");
     }
 
-    public void killRiscue() {
+    public void killRiscue()
+    {
+        Debug.Log("02");
         Destroy(Riscue);
     }
 }
