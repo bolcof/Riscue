@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public AudioSource audioAcornCollect; 
     public float moveSpeed;
     public float jumpForce;
 
@@ -15,6 +16,8 @@ public class PlayerController : MonoBehaviour
     private Collider2D myCollider; 
 
     private Animator myAnimator; 
+
+    //public bool acornnum;
 
     void Start()
     {
@@ -54,5 +57,14 @@ public class PlayerController : MonoBehaviour
 
         //set grounded boolean (layer checker) to Grounded boolean in Animator 
         myAnimator.SetBool ("Grounded", grounded); 
+    }
+
+    //Collecting Acorns 
+    private void OnTriggerEnter2D(Collider2D other){
+        if(other.gameObject.CompareTag("Acorn")){
+            audioAcornCollect.Play(); 
+            Destroy(other.gameObject); 
+
+        }
     }
 }
