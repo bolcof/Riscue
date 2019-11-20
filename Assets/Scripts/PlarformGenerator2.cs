@@ -5,10 +5,15 @@ using UnityEngine;
 public class PlarformGenerator2 : MonoBehaviour
 {
     public GameObject thePlatform;
-    public Transform generationPoint;
+    public GameObject theAcorn; 
+    public Transform generationPlatformPoint;
+
+    public Transform generationAcornPoint; 
     public float distanceBetween;
 
     private float platformWidth;
+
+    private float acornWidth; 
 
     //Randomization distanceBetween variables 
     public float distanceBetweenMin;
@@ -19,6 +24,8 @@ public class PlarformGenerator2 : MonoBehaviour
     {
         //set length of platform equal to our float 
         platformWidth = thePlatform.GetComponent<BoxCollider2D>().size.x;
+        //set length of acorn equal to our float 
+        acornWidth = theAcorn.GetComponent<BoxCollider2D>().size.x;  
     }
 
 
@@ -28,10 +35,10 @@ public class PlarformGenerator2 : MonoBehaviour
         //if it is; create new platform where platformgeneration point is in scene 
 
         Debug.Log("T: "+transform.position.x.ToString());
-        Debug.Log("G: "+generationPoint.position.x.ToString());
+        Debug.Log("G: "+generationPlatformPoint.position.x.ToString());
 
         //if x position of platform obj right now is less than generation point 
-        if (transform.position.x < generationPoint.position.x)
+        if (transform.position.x < generationPlatformPoint.position.x)
         {
 
             //randomize distance between platforms 
@@ -42,6 +49,15 @@ public class PlarformGenerator2 : MonoBehaviour
 
             //create new platform 
             Instantiate(thePlatform, transform.position, transform.rotation);
+        }
+        else if (transform.position.x <generationAcornPoint.position.x){
+            //randomize distance between acorns
+            distanceBetween = Random.Range(distanceBetweenMin, distanceBetweenMax);
+
+            //move transform ahead -> move x value ahead by our platformwidth and distanceBetween, then keep y and z values the same
+            transform.position = new Vector3(transform.position.x + acornWidth + distanceBetween, transform.position.y, transform.position.z);
+
+            Instantiate(theAcorn, transform.position, transform.rotation);
         }
     }
 }
