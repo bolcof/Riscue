@@ -436,6 +436,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Platform_4x1
       objectReference: {fileID: 0}
+    - target: {fileID: 1504258159410308079, guid: a0ef75b8e13c94900a06361443988a84,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1504258159410308072, guid: a0ef75b8e13c94900a06361443988a84,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -560,6 +565,7 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 256
+  AcornNum: 0
 --- !u!50 &783368633
 Rigidbody2D:
   serializedVersion: 4

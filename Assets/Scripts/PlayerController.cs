@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement; 
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -60,6 +61,12 @@ public class PlayerController : MonoBehaviour
 
         //set grounded boolean (layer checker) to Grounded boolean in Animator 
         myAnimator.SetBool ("Grounded", grounded); 
+
+        //Restart Level 
+        if(Input.GetKeyDown(KeyCode.R)){
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+   
     }
 
     //Collecting Acorns 
