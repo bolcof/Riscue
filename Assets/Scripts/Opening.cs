@@ -13,6 +13,7 @@ public class Opening : MonoBehaviour
     void Start()
     {
         timer = 0.0f;
+        playButton.enabled = false;
     }
 
     // Update is called once per frame
@@ -20,9 +21,9 @@ public class Opening : MonoBehaviour
     {
         timer += Time.deltaTime;
         Debug.Log(timer);
-        if(timer >= 0)
+        if(timer >= 3.6f)
         {
-
+            playButton.enabled = true;
         }
     }
 
