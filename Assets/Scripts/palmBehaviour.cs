@@ -4,24 +4,36 @@ using UnityEngine;
 
 public class palmBehaviour : MonoBehaviour
 {
-
-    public int GrowthLevel = 0;
-    public int GrowthLevelMax = 4;
-    public Sprite[] palmImage = new Sprite[5];
-    public float[] palmScale = new float[5];
+    public float growSpeed;
+    public float palmScale;
+    public bool isGrowing;
+    public Animator Anim;
+    public PlayerController PC;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        PC = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
+        isGrowing = false;
+        this.transform.localScale = new Vector3(1, 1, 1) * palmScale * Random.Range(0.8f, 1.4f);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (GrowthLevel >= GrowthLevelMax) { GrowthLevel = GrowthLevelMax; }
-        else if(GrowthLevel <= 0) { GrowthLevel = 0; }
-        this.GetComponent<SpriteRenderer>().sprite = palmImage[GrowthLevel];
-        this.transform.localScale = new Vector3(palmScale[GrowthLevel], palmScale[GrowthLevel], palmScale[GrowthLevel]);
+        if (isGrowing)
+        {
+            Anim.enabled = true;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player")) {
+            if (PC.AcornNum >= 1)
+            {
+                isGrowing = true;
+            }
+        }
     }
 }
