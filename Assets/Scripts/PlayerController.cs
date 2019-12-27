@@ -12,6 +12,8 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D myRigidbody;
 
     public bool grounded;
+
+    public bool spit; 
     public LayerMask whatIsGround;
     public int AcornNum;
 
@@ -39,9 +41,14 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (myAnimator.GetBool("Spit")){
+            myAnimator.SetBool("Spit", false);
+        }
         //return true or false if collider is touching another collider on different layer
         //aka is player collider touching ground collider (different layers)  
         grounded = Physics2D.IsTouchingLayers(myCollider, whatIsGround);
+
+        //spit = 
 
         //grab speed of Player and set to new x value moveSpeed and same y value speed
         myRigidbody.velocity = new Vector2(moveSpeed, myRigidbody.velocity.y);
@@ -54,6 +61,13 @@ public class PlayerController : MonoBehaviour
                 //set Player's speed to a new jumping value 
                 myRigidbody.velocity = new Vector2(myRigidbody.velocity.x, jumpForce);
             }
+        }
+
+        if(Input.GetKeyDown(KeyCode.Space)){
+          myAnimator.SetBool ("Spit", true);
+          Debug.Log("testing spit"); 
+
+          //INSTANTIATE ACORN, RELATIVE TO PLAYER POSITION 
         }
 
         //grab speed value of Player and set it to Speed variable in Animator 
