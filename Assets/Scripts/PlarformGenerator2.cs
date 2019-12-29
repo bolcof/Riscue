@@ -50,7 +50,7 @@ public class PlarformGenerator2 : MonoBehaviour
             //create new platform 
             Instantiate(thePlatform, transform.position, transform.rotation);
         }
-        else if (transform.position.x <generationAcornPoint.position.x){
+        if (transform.position.x <generationAcornPoint.position.x){
             //randomize distance between acorns
             distanceBetween = Random.Range(distanceBetweenMin, distanceBetweenMax);
 

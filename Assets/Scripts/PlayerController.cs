@@ -6,6 +6,9 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public AudioSource audioAcornCollect; 
+
+    public GameObject theAcorn; 
+
     public float moveSpeed;
     public float jumpForce;
 
@@ -63,11 +66,13 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if(Input.GetKeyDown(KeyCode.Space)){
+        if(Input.GetKeyDown(KeyCode.Space) && AcornNum > 0){
           myAnimator.SetBool ("Spit", true);
           Debug.Log("testing spit"); 
 
-          //INSTANTIATE ACORN, RELATIVE TO PLAYER POSITION 
+          InstantiateAcornSpit(); 
+          Debug.Log("am I instantiating acorn?"); 
+
         }
 
         //grab speed value of Player and set it to Speed variable in Animator 
@@ -91,5 +96,16 @@ public class PlayerController : MonoBehaviour
             AcornNum++;
             myAnimator.SetInteger("AcornNum", AcornNum);
         }
+    }
+
+    private void InstantiateAcornSpit(){
+        //in front of player position (x-5) instantiate acorn 
+        Vector3 acornPosition = new Vector3(this.transform.position.x + 1.5f, transform.position.y+1, transform.position.z);
+        //create new game object to put instantiated acorn in 
+        GameObject myAcornGO = Instantiate(theAcorn, acornPosition, transform.rotation);
+        //then adjust speed of that INSTANTIATED acorn rather than the prefab version
+        myAcornGO.GetComponent<AcornController>().moveSpeed = 10;
+        myAcornGO.GetComponent<Rigidbody2D>().gravityScale = 1; 
+        AcornNum--; 
     }
 }
