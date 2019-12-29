@@ -100,7 +100,7 @@ public class PlayerController : MonoBehaviour
 
     private void InstantiateAcornSpit(){
         //in front of player position (x-5) instantiate acorn 
-        Vector3 acornPosition = new Vector3(this.transform.position.x + 1.5f, transform.position.y+1, transform.position.z);
+        Vector3 acornPosition = new Vector3(this.transform.position.x + 1.2f, transform.position.y+1, transform.position.z);
         //create new game object to put instantiated acorn in 
         GameObject myAcornGO = Instantiate(theAcorn, acornPosition, transform.rotation);
         //then adjust speed of that INSTANTIATED acorn rather than the prefab version
