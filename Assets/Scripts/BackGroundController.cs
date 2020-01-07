@@ -10,6 +10,7 @@ public class BackGroundController : MonoBehaviour
     public float[] layerImageWidth;
     private int[] addedLayerNum = new int[6];
     public float[] layerMoveScale;
+    public PlayerController PC;
 
     // Start is called before the first frame update
     void Start()
@@ -40,7 +41,10 @@ public class BackGroundController : MonoBehaviour
         }
         for(int i = 0; i < layerNUM; i++)
         {
-            layer[i].transform.Translate(layerMoveScale[i], 0, 0);
+            if (!PC.stopped)
+            {
+                layer[i].transform.Translate(layerMoveScale[i] * PC.moveSpeed / 6.0f, 0, 0);
+            }
         }
     }
 }

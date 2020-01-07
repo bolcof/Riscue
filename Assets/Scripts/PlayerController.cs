@@ -12,9 +12,12 @@ public class PlayerController : MonoBehaviour
     public float moveSpeed;
     public float jumpForce;
 
+    public float movedRate;
+    private float exPos, nowPos;
+
     private Rigidbody2D myRigidbody;
 
-    public bool grounded;
+    public bool grounded, stopped;
 
     public bool spit; 
     public LayerMask whatIsGround;
@@ -39,6 +42,7 @@ public class PlayerController : MonoBehaviour
 
         myAnimator.SetInteger("AcornNum", AcornNum);
 
+        exPos = this.gameObject.transform.position.x;
     }
 
     // Update is called once per frame
@@ -65,6 +69,11 @@ public class PlayerController : MonoBehaviour
                 myRigidbody.velocity = new Vector2(myRigidbody.velocity.x, jumpForce);
             }
         }
+
+        exPos = nowPos;
+        nowPos = this.transform.position.x;
+        if (nowPos - exPos < 0.05f) { stopped = true; }
+        else { stopped = false; }
 
         if(Input.GetKeyDown(KeyCode.Space) && AcornNum > 0){
           myAnimator.SetBool ("Spit", true);

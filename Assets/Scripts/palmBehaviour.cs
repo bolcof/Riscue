@@ -9,6 +9,7 @@ public class palmBehaviour : MonoBehaviour
     public bool isGrowing;
     public Animator Anim;
     public PlayerController PC;
+    public SpriteRenderer SR;
 
     // Start is called before the first frame update
     void Start()
@@ -32,7 +33,11 @@ public class palmBehaviour : MonoBehaviour
         if (collision.gameObject.CompareTag("Player")) {
             if (PC.AcornNum >= 1)
             {
+                SR.enabled = false;
                 isGrowing = true;
+            }
+            else {
+                Debug.Log("DAMAGE!!");
             }
         }
     }
