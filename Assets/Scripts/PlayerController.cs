@@ -15,6 +15,8 @@ public class PlayerController : MonoBehaviour
     public float movedRate;
     private float exPos, nowPos;
 
+    public float counter; 
+
     private Rigidbody2D myRigidbody;
 
     public bool grounded, stopped;
@@ -109,12 +111,12 @@ public class PlayerController : MonoBehaviour
 
     private void InstantiateAcornSpit(){
         //in front of player position (x-5) instantiate acorn 
-        Vector3 acornPosition = new Vector3(this.transform.position.x + 1.2f, transform.position.y+1, transform.position.z);
+        Vector3 acornPosition = new Vector3(this.transform.position.x + 1.03f, transform.position.y+1, transform.position.z + Mathf.Sin(Mathf.PI * 2 * counter / 360));
         //create new game object to put instantiated acorn in 
         GameObject myAcornGO = Instantiate(theAcorn, acornPosition, transform.rotation);
         //then adjust speed of that INSTANTIATED acorn rather than the prefab version
-        myAcornGO.GetComponent<AcornController>().moveSpeed = 10;
-        myAcornGO.GetComponent<Rigidbody2D>().gravityScale = 1; 
+        myAcornGO.GetComponent<AcornController>().moveSpeed = 13;
+        myAcornGO.GetComponent<Rigidbody2D>().gravityScale = 3; 
         AcornNum--; 
     }
 }

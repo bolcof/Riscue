@@ -30,15 +30,14 @@ public class palmBehaviour : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player")) {
-            if (PC.AcornNum >= 1)
-            {
-                SR.enabled = false;
-                isGrowing = true;
-            }
-            else {
-                Debug.Log("DAMAGE!!");
-            }
+        if (collision.gameObject.CompareTag("Acorn")) {
+           
+            SR.enabled = false;
+            isGrowing = true;
+        
+            // else {
+            //     Debug.Log("DAMAGE!!");
+            // }
         }
     }
 }

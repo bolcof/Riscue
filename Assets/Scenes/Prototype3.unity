@@ -741,7 +741,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioAcornCollect: {fileID: 783368637}
-  theAcorn: {fileID: 0}
+  theAcorn: {fileID: 2006423730311859837, guid: ff4d305048419420fba52ddfa17a0d1a,
+    type: 3}
   moveSpeed: 6
   jumpForce: 20
   movedRate: 0
