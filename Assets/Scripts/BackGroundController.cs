@@ -43,7 +43,7 @@ public class BackGroundController : MonoBehaviour
         {
             if (!PC.stopped)
             {
-                layer[i].transform.Translate(layerMoveScale[i] * PC.moveSpeed / 6.0f, 0, 0);
+                layer[i].transform.Translate(layerMoveScale[i] * PC.moveSpeed / 4.0f, 0, 0);
             }
         }
     }
