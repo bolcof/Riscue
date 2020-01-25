@@ -8,7 +8,7 @@ public class BackGroundController : MonoBehaviour
     public int layerNUM;
     public GameObject[] layer;
     public float[] layerImageWidth;
-    private int[] addedLayerNum = new int[6];
+    private int[] addedLayerNum = new int[5];
     public float[] layerMoveScale;
     public PlayerController PC;
 
@@ -22,7 +22,13 @@ public class BackGroundController : MonoBehaviour
         
         for (int i = 0; i < layerNUM; i++)
         {
-            GameObject tmpObj = Instantiate(layer[i], new Vector3(layer[i].transform.position.x + layerImageWidth[i] * (addedLayerNum[i] + 1), layer[i].transform.position.y, layer[i].transform.position.z), Quaternion.identity, this.transform);
+            GameObject tmpObj = Instantiate(layer[i], 
+            new Vector3(layer[i].transform.position.x + layerImageWidth[i] * (addedLayerNum[i] + 1),
+                layer[i].transform.position.y, layer[i].transform.position.z), 
+            Quaternion.identity, 
+            this.transform);
+
+
             tmpObj.transform.parent = layer[i].transform;
             addedLayerNum[i]++;
         }
@@ -34,7 +40,12 @@ public class BackGroundController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.P)) {
             for (int i = 0; i < layerNUM; i++)
             {
-                GameObject tmpObj = Instantiate(layer[i], new Vector3(layer[i].transform.position.x + layerImageWidth[i] * (addedLayerNum[i] + 1), layer[i].transform.position.y, layer[i].transform.position.z), Quaternion.identity, this.transform);
+                GameObject tmpObj = Instantiate(layer[i], 
+                new Vector3(layer[i].transform.position.x + layerImageWidth[i] * (addedLayerNum[i] + 1),
+                    layer[i].transform.position.y, 
+                    layer[i].transform.position.z),
+                Quaternion.identity,
+                this.transform);
                 tmpObj.transform.parent = layer[i].transform;
                 addedLayerNum[i]++;
             }
