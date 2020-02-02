@@ -28,6 +28,6 @@ public class Opening : MonoBehaviour
     }
 
     public void ClickPlay() {
-        SceneManager.LoadScene("Prototype3");
+        SceneManager.LoadScene("Prototype4");
     }
 }
