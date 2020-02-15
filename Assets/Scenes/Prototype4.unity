@@ -3016,13 +3016,13 @@ MonoBehaviour:
   - 45
   - 45
   layerMoveScale:
-  - -0.03
+  - 0.01
   - 0.025
   - 0.05
   - 0.07
   - 0.1
-  - 0.15
-  PC: {fileID: 0}
+  - 0.05
+  PC: {fileID: 710847657}
 --- !u!4 &1834345684
 Transform:
   m_ObjectHideFlags: 0
@@ -3031,7 +3031,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1834345682}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 464, y: 186.1, z: 6}
+  m_LocalPosition: {x: 400, y: 186.1, z: 6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1106316044}
