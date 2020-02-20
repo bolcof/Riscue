@@ -27,7 +27,9 @@ public class PlayerController : MonoBehaviour
 
     private Collider2D myCollider; 
 
-    private Animator myAnimator; 
+    private Animator myAnimator;
+
+    public GameState gameStageObj;
 
     //public bool acornnum;
 
@@ -45,6 +47,8 @@ public class PlayerController : MonoBehaviour
         myAnimator.SetInteger("AcornNum", AcornNum);
 
         exPos = this.gameObject.transform.position.x;
+
+        gameStageObj = GameObject.Find("GameState").GetComponent<GameState>();
     }
 
     // Update is called once per frame
@@ -59,32 +63,40 @@ public class PlayerController : MonoBehaviour
 
         //spit = 
 
-        //grab speed of Player and set to new x value moveSpeed and same y value speed
-        myRigidbody.velocity = new Vector2(moveSpeed, myRigidbody.velocity.y);
-
-        //if you press up arrow, W or hold mouse down 
-        if(Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W) || Input.GetMouseButtonDown(0))
+        if (gameStageObj.status == GameState.State.Playing)
         {
-            if (grounded) //is true 
+            //grab speed of Player and set to new x value moveSpeed and same y value speed
+            myRigidbody.velocity = new Vector2(moveSpeed, myRigidbody.velocity.y);
+
+            //if you press up arrow, W or hold mouse down 
+            if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W) || Input.GetMouseButtonDown(0))
             {
-                //set Player's speed to a new jumping value 
-                myRigidbody.velocity = new Vector2(myRigidbody.velocity.x, jumpForce);
+                if (grounded) //is true 
+                {
+                    //set Player's speed to a new jumping value 
+                    myRigidbody.velocity = new Vector2(myRigidbody.velocity.x, jumpForce);
+                }
             }
+
+
+            if (Input.GetKeyDown(KeyCode.Space) && AcornNum > 0)
+            {
+                myAnimator.SetBool("Spit", true);
+                Debug.Log("testing spit");
+
+                InstantiateAcornSpit();
+                Debug.Log("am I instantiating acorn?");
+            }
+        }
+        else
+        {
+            myRigidbody.constraints = RigidbodyConstraints2D.FreezePositionX;
         }
 
         exPos = nowPos;
         nowPos = this.transform.position.x;
         if (nowPos - exPos < 0.05f) { stopped = true; }
         else { stopped = false; }
-
-        if(Input.GetKeyDown(KeyCode.Space) && AcornNum > 0){
-          myAnimator.SetBool ("Spit", true);
-          Debug.Log("testing spit"); 
-
-          InstantiateAcornSpit(); 
-          Debug.Log("am I instantiating acorn?"); 
-
-        }
 
         //grab speed value of Player and set it to Speed variable in Animator 
         myAnimator.SetFloat ("Speed", myRigidbody.velocity.x); 
