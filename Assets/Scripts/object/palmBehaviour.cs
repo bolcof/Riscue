@@ -36,7 +36,8 @@ public class palmBehaviour : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Acorn")) {
-           
+
+            this.tag = ("PalmTree");
             SR.enabled = false;
             isGrowing = true;
 
