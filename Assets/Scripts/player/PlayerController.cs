@@ -60,14 +60,20 @@ public class PlayerController : MonoBehaviour
         if (myAnimator.GetBool("Spit")){
             myAnimator.SetBool("Spit", false);
         }
+
+        Debug.Log(myAnimator.GetCurrentAnimatorStateInfo(0).IsName("Player_fall"));
+
         //return true or false if collider is touching another collider on different layer
         //aka is player collider touching ground collider (different layers)  
         grounded = Physics2D.IsTouchingLayers(myCollider, whatIsGround);
 
         //spit = 
 
-        if (gameStageObj.status == GameState.State.Playing)
+        if (gameStageObj.status == GameState.State.Playing && !myAnimator.GetCurrentAnimatorStateInfo(0).IsName("Player_fall"))
         {
+            myRigidbody.constraints = RigidbodyConstraints2D.None;
+            myRigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
+
             //grab speed of Player and set to new x value moveSpeed and same y value speed
             myRigidbody.velocity = new Vector2(moveSpeed, myRigidbody.velocity.y);
 
