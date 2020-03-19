@@ -2,16 +2,39 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 public class GameState : MonoBehaviour
 {
-    public float timeRimit = 60.0f;
-    public int acorns = 0;
-    public int palms = 0;
+    public float timeLimit = 30.0f;
+
+    [SerializeField]
+    public int acornScore;
+
+    [SerializeField]
+    public int palmScore;
+
     public State status = State.Playing;
 
     public GameObject resultPanel;
     public Text timeText;
+
+    [SerializeField]
+    private Text acornScoreText;
+    [SerializeField]
+    private Text palmScoreText;
+
+    [SerializeField]
+    private GameObject waterLevel;
+
+    [SerializeField]
+    private float waterLevelBottom;
+
+    [SerializeField]
+    private float waterLevelTop;
+
+    [SerializeField]
+    private float time;
 
     public enum State
     {
@@ -23,26 +46,55 @@ public class GameState : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        timeText.text = timeRimit.ToString("f1");
+        timeText.text = timeLimit.ToString("f1");
+        time = timeLimit;
+        waterLevelBottom = waterLevel.transform.position.y;
     }
 
     // Update is called once per frame
     void Update()
     {
+        runTimer();
+
+        waterLevelRise();
+
+    }
+
+    public void incrementAcornScore(int score) {
+        acornScoreText.text = "x" + ++acornScore;
+    }
+
+    public void incrementPalmScore(int score) {
+        palmScoreText.text = "x" + ++palmScore;
+    }
+
+    private void runTimer() {
         if (status == State.Playing)
         {
-            timeRimit -= Time.deltaTime;
-            timeText.text = timeRimit.ToString("f1");
+            time -= Time.deltaTime;
+            timeText.text = time.ToString("f1");
         }
         else if(status == State.Result)
         {
             resultPanel.SetActive(true);
         }
 
-        if (timeRimit <= 0.0f)
+        if (time <= 0.0f)
         {
-            timeRimit = 0.0f;
+            time = 0.0f;
             status = State.Result;
         }
     }
+
+    private void waterLevelRise(){
+        float newY = waterLevelTop - (time * (Math.Abs(waterLevelBottom-waterLevelTop) / timeLimit ));
+        waterLevel.transform.position = new Vector3(waterLevel.transform.position.x, newY, waterLevel.transform.position.z);
+    }
+
+
+
+    // void OnGUI (){
+    //     GUI.Box(new Rect(Screen.width/2 + sizeX/2, offsetY, sizeX, sizeY), " " + currentScore); 
+
+    // }
 }

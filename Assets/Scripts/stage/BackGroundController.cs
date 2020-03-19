@@ -53,6 +53,7 @@ public class BackGroundController : MonoBehaviour
                     layer[i].transform.position.z),
                 Quaternion.identity,
                 this.transform);
+
             }
             else
             {
@@ -62,6 +63,14 @@ public class BackGroundController : MonoBehaviour
                     layer[i].transform.position.z),
                 Quaternion.identity,
                 this.transform);
+                
+            }
+            //index for layer stage 2 
+            if (i == 1) {
+                
+                tmpObj.transform.localScale = new Vector3(-tmpObj.transform.localScale.x,
+                                                            tmpObj.transform.localScale.y, 
+                                                            tmpObj.transform.localScale.z);
             }
             tmpObj.transform.parent = layer[i].transform;
             addedLayerNum[i]++;

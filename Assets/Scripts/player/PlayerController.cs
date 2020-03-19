@@ -118,6 +118,8 @@ public class PlayerController : MonoBehaviour
             Destroy(other.gameObject);
             AcornNum++;
             myAnimator.SetInteger("AcornNum", AcornNum);
+            //Update acorn score
+            gameStageObj.incrementAcornScore(1);
         }
     }
 
