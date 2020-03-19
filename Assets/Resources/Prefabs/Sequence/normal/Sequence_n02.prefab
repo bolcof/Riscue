@@ -455,7 +455,7 @@ GameObject:
   - component: {fileID: 5641779178201952569}
   m_Layer: 0
   m_Name: palmTreeRoot (2)
-  m_TagString: Untagged
+  m_TagString: Hole
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -510,6 +510,7 @@ MonoBehaviour:
   Anim: {fileID: 5361473966601712088}
   PC: {fileID: 0}
   SR: {fileID: 4128200071669352640}
+  successValue: 1
 --- !u!1 &4995751006451449243
 GameObject:
   m_ObjectHideFlags: 0
@@ -783,7 +784,7 @@ GameObject:
   - component: {fileID: 818402897983149712}
   m_Layer: 0
   m_Name: palmTreeRoot (1)
-  m_TagString: Untagged
+  m_TagString: Hole
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -838,6 +839,7 @@ MonoBehaviour:
   Anim: {fileID: 8945495346143708966}
   PC: {fileID: 0}
   SR: {fileID: 2005788296350080593}
+  successValue: 1
 --- !u!1 &7772124290226412825
 GameObject:
   m_ObjectHideFlags: 0
@@ -951,7 +953,7 @@ GameObject:
   - component: {fileID: 7772124290557859749}
   m_Layer: 0
   m_Name: palmTreeRoot
-  m_TagString: Untagged
+  m_TagString: Hole
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1006,6 +1008,7 @@ MonoBehaviour:
   Anim: {fileID: 7772124290226412824}
   PC: {fileID: 0}
   SR: {fileID: 7772124291300361502}
+  successValue: 1
 --- !u!1 &7772124291300361500
 GameObject:
   m_ObjectHideFlags: 0
