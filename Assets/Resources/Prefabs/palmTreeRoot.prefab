@@ -117,7 +117,7 @@ GameObject:
   - component: {fileID: 7911272858038293971}
   m_Layer: 0
   m_Name: palmTreeRoot
-  m_TagString: Untagged
+  m_TagString: Hole
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -172,6 +172,7 @@ MonoBehaviour:
   Anim: {fileID: 7911272857446670190}
   PC: {fileID: 0}
   SR: {fileID: 7911272858520225640}
+  successValue: 1
 --- !u!1 &7911272858520225642
 GameObject:
   m_ObjectHideFlags: 0
@@ -259,26 +260,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7911272858038293973}
     m_Modifications:
-    - target: {fileID: 1922822686591456800, guid: e9f8fdabfb62e42fe8ae87d1bba83d1b,
-        type: 3}
-      propertyPath: m_Name
-      value: palm tree
-      objectReference: {fileID: 0}
-    - target: {fileID: 1922822686591456801, guid: e9f8fdabfb62e42fe8ae87d1bba83d1b,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1922822686591456802, guid: e9f8fdabfb62e42fe8ae87d1bba83d1b,
-        type: 3}
-      propertyPath: m_FlipY
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1922822686591456802, guid: e9f8fdabfb62e42fe8ae87d1bba83d1b,
-        type: 3}
-      propertyPath: m_Color.a
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1922822686591456803, guid: e9f8fdabfb62e42fe8ae87d1bba83d1b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -333,6 +314,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1922822686591456802, guid: e9f8fdabfb62e42fe8ae87d1bba83d1b,
+        type: 3}
+      propertyPath: m_FlipY
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1922822686591456802, guid: e9f8fdabfb62e42fe8ae87d1bba83d1b,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1922822686591456801, guid: e9f8fdabfb62e42fe8ae87d1bba83d1b,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1922822686591456800, guid: e9f8fdabfb62e42fe8ae87d1bba83d1b,
+        type: 3}
+      propertyPath: m_Name
+      value: palm tree
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e9f8fdabfb62e42fe8ae87d1bba83d1b, type: 3}

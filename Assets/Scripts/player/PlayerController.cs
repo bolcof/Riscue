@@ -21,7 +21,6 @@ public class PlayerController : MonoBehaviour
 
     public bool grounded, stopped;
 
-    public bool spit; 
     public LayerMask whatIsGround;
     public int AcornNum;
 
@@ -54,6 +53,10 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
+        //return true of false is player tag is touching hole tag 
+   
+        
         if (myAnimator.GetBool("Spit")){
             myAnimator.SetBool("Spit", false);
         }
@@ -120,6 +123,10 @@ public class PlayerController : MonoBehaviour
             myAnimator.SetInteger("AcornNum", AcornNum);
             //Update acorn score
             gameStageObj.incrementAcornScore(1);
+        }
+        if(other.gameObject.CompareTag("Hole")){
+            myAnimator.SetTrigger("Fallen"); 
+            Debug.Log("Am I hitting a hole?"); 
         }
     }
 
