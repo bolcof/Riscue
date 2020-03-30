@@ -41,7 +41,8 @@ public class palmBehaviour : MonoBehaviour
             this.tag = ("PalmTree");
             SR.enabled = false;
             isGrowing = true;
-            callSquirrel(1);
+
+            callSquirrel(Random.Range(1,4));
 
             gameState.incrementPalmScore(1);
         
@@ -50,9 +51,9 @@ public class palmBehaviour : MonoBehaviour
 
     private void callSquirrel(int num)
     {
-        Debug.Log("call");
         for(int i = 0; i < num; i++)
         {
+            Debug.Log("call");
             float seed = Random.Range(0.0f,1.0f);
             int plmi;
             if(seed < 0.5f) { plmi = -1; }

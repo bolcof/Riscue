@@ -61,8 +61,6 @@ public class PlayerController : MonoBehaviour
             myAnimator.SetBool("Spit", false);
         }
 
-        Debug.Log(myAnimator.GetCurrentAnimatorStateInfo(0).IsName("Player_fall"));
-
         //return true or false if collider is touching another collider on different layer
         //aka is player collider touching ground collider (different layers)  
         grounded = Physics2D.IsTouchingLayers(myCollider, whatIsGround);

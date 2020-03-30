@@ -10,7 +10,7 @@ public class SquirrelBehaviour : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        speed = 0.28f;
+        speed = Random.Range(0.25f, 0.285f);
     }
 
     // Update is called once per frame
