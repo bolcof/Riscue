@@ -172,6 +172,8 @@ MonoBehaviour:
   Anim: {fileID: 7911272857446670190}
   PC: {fileID: 0}
   SR: {fileID: 7911272858520225640}
+  SquirrelObj: {fileID: 2234932218455762589, guid: 6a51651d609ed1349b29fd9a9ed8ad88,
+    type: 3}
   successValue: 1
 --- !u!1 &7911272858520225642
 GameObject:
@@ -260,6 +262,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7911272858038293973}
     m_Modifications:
+    - target: {fileID: 1922822686591456800, guid: e9f8fdabfb62e42fe8ae87d1bba83d1b,
+        type: 3}
+      propertyPath: m_Name
+      value: palm tree
+      objectReference: {fileID: 0}
+    - target: {fileID: 1922822686591456801, guid: e9f8fdabfb62e42fe8ae87d1bba83d1b,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1922822686591456802, guid: e9f8fdabfb62e42fe8ae87d1bba83d1b,
+        type: 3}
+      propertyPath: m_FlipY
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1922822686591456802, guid: e9f8fdabfb62e42fe8ae87d1bba83d1b,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1922822686591456803, guid: e9f8fdabfb62e42fe8ae87d1bba83d1b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -314,26 +336,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1922822686591456802, guid: e9f8fdabfb62e42fe8ae87d1bba83d1b,
-        type: 3}
-      propertyPath: m_FlipY
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1922822686591456802, guid: e9f8fdabfb62e42fe8ae87d1bba83d1b,
-        type: 3}
-      propertyPath: m_Color.a
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1922822686591456801, guid: e9f8fdabfb62e42fe8ae87d1bba83d1b,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1922822686591456800, guid: e9f8fdabfb62e42fe8ae87d1bba83d1b,
-        type: 3}
-      propertyPath: m_Name
-      value: palm tree
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e9f8fdabfb62e42fe8ae87d1bba83d1b, type: 3}
