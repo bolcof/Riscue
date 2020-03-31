@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2234932218455762563}
   - component: {fileID: 2234932218455762588}
   - component: {fileID: 383828298130962879}
+  - component: {fileID: 4121172667080013211}
   m_Layer: 0
   m_Name: Squirrel
   m_TagString: Untagged
@@ -70,7 +71,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 12ab97b9aa85d4cec83ffedc27865c8c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5ddbb200822d07840944ab0cbc316456, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -93,3 +94,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3535f24869e52a546a2c0b4d9bb55818, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetPalmTree: {fileID: 0}
+--- !u!95 &4121172667080013211
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2234932218455762589}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3425d7af04b027749865ecdfd4e5c79c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

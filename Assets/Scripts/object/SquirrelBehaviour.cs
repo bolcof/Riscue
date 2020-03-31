@@ -6,11 +6,15 @@ public class SquirrelBehaviour : MonoBehaviour
 {
     public GameObject targetPalmTree;
     private float speed;
+    public bool flip, up;
 
     // Start is called before the first frame update
     void Start()
     {
         speed = Random.Range(0.25f, 0.285f);
+        this.gameObject.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f) * Random.Range(0.67f, 0.85f);
+        if (flip) { this.gameObject.GetComponent<SpriteRenderer>().flipX = true; }
+        up = false;
     }
 
     // Update is called once per frame
@@ -18,7 +22,7 @@ public class SquirrelBehaviour : MonoBehaviour
     {
         float difX = this.gameObject.transform.position.x - targetPalmTree.transform.position.x;
 
-        if (Mathf.Abs(difX) >= 0.3f)
+        if (Mathf.Abs(difX) >= 0.3f && !up)
         {
             if (difX < 0)
             {
@@ -32,7 +36,22 @@ public class SquirrelBehaviour : MonoBehaviour
         }
         else if (this.gameObject.transform.position.y < -4.0f+(targetPalmTree.transform.localScale.y*9.0f))
         {
-            this.transform.Translate(0, speed, 0);
+            up = true;
+            
+            if (flip)
+            {
+                this.transform.Translate(speed, 0, 0);
+                this.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 90.0f);
+            }
+            else
+            {
+                this.transform.Translate(-speed, 0, 0);
+                this.transform.rotation = Quaternion.Euler(0.0f, 0.0f, -90.0f);
+            }
+        }
+        else
+        {
+            this.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
         }
     }
 }

@@ -42,7 +42,8 @@ public class palmBehaviour : MonoBehaviour
             SR.enabled = false;
             isGrowing = true;
 
-            callSquirrel(Random.Range(1,4));
+            //callSquirrel(Random.Range(1,4));
+            callSquirrel(1);
 
             gameState.incrementPalmScore(1);
         
@@ -53,7 +54,6 @@ public class palmBehaviour : MonoBehaviour
     {
         for(int i = 0; i < num; i++)
         {
-            Debug.Log("call");
             float seed = Random.Range(0.0f,1.0f);
             int plmi;
             if(seed < 0.5f) { plmi = -1; }
@@ -61,6 +61,9 @@ public class palmBehaviour : MonoBehaviour
         
             float posX = GameObject.Find("Main Camera").transform.position.x + Random.Range(9.0f, 11.0f) * plmi;
             GameObject SqlObj = Instantiate(SquirrelObj, new Vector3(posX, this.gameObject.transform.position.y, -5.0f), Quaternion.identity);
+            if(plmi == -1) {
+                SqlObj.GetComponent<SquirrelBehaviour>().flip = true;
+            }
             SqlObj.GetComponent<SquirrelBehaviour>().targetPalmTree = this.gameObject;
         }
     }
