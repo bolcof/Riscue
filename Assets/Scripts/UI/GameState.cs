@@ -31,7 +31,7 @@ public class GameState : MonoBehaviour
     private float waterLevelBottom;
 
     [SerializeField]
-    private float waterLevelTop;
+    private float waterLevelTop = -1.0f;
 
     [SerializeField]
     private float time;
@@ -48,6 +48,8 @@ public class GameState : MonoBehaviour
     {
         timeText.text = timeLimit.ToString("f1");
         time = timeLimit;
+        waterLevel = GameObject.Find("water");
+        Debug.Log(waterLevel.transform.position.y);
         waterLevelBottom = waterLevel.transform.position.y;
     }
 
@@ -57,6 +59,7 @@ public class GameState : MonoBehaviour
         runTimer();
 
         waterLevelRise();
+ 
 
     }
 
@@ -88,6 +91,7 @@ public class GameState : MonoBehaviour
 
     private void waterLevelRise(){
         float newY = waterLevelTop - (time * (Math.Abs(waterLevelBottom-waterLevelTop) / timeLimit ));
+        Debug.Log("newY=" + newY.ToString());
         waterLevel.transform.position = new Vector3(waterLevel.transform.position.x, newY, waterLevel.transform.position.z);
     }
 

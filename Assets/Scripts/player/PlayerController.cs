@@ -67,7 +67,7 @@ public class PlayerController : MonoBehaviour
 
         //spit = 
 
-        if (gameStageObj.status == GameState.State.Playing && !myAnimator.GetCurrentAnimatorStateInfo(0).IsName("Player_fall"))
+        if ((gameStageObj.status == GameState.State.Playing || gameStageObj.status == GameState.State.Result) && !myAnimator.GetCurrentAnimatorStateInfo(0).IsName("Player_fall"))
         {
             myRigidbody.constraints = RigidbodyConstraints2D.None;
             myRigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
