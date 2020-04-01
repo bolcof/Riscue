@@ -498,16 +498,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2007161788681955014, guid: 9b71548b8d3b1441b8e953e3d2226172,
+    - target: {fileID: 2007161788681955012, guid: 9b71548b8d3b1441b8e953e3d2226172,
         type: 3}
-      propertyPath: m_Name
-      value: SceneManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 2007161788681955014, guid: 9b71548b8d3b1441b8e953e3d2226172,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
+      propertyPath: transition
+      value: 
+      objectReference: {fileID: 1462681433}
     - target: {fileID: 2007161788681955013, guid: 9b71548b8d3b1441b8e953e3d2226172,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -563,11 +558,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2007161788681955012, guid: 9b71548b8d3b1441b8e953e3d2226172,
+    - target: {fileID: 2007161788681955014, guid: 9b71548b8d3b1441b8e953e3d2226172,
         type: 3}
-      propertyPath: transition
-      value: 
-      objectReference: {fileID: 1462681433}
+      propertyPath: m_Name
+      value: SceneManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 2007161788681955014, guid: 9b71548b8d3b1441b8e953e3d2226172,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2007161788693960795, guid: 9b71548b8d3b1441b8e953e3d2226172,
         type: 3}
       propertyPath: m_LocalPosition.z
@@ -618,7 +618,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 1, g: 1, b: 1, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
