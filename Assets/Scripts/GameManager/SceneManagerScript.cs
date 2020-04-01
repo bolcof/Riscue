@@ -30,6 +30,8 @@ public class SceneManagerScript : MonoBehaviour
 
         yield return new WaitForSeconds(transitiontime); 
 
+        //無理やり
+        if(stageIndex == 6) { stageIndex = 5; }
         SceneManager.LoadScene(stageIndex); 
 
     }
