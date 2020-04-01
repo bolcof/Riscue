@@ -11,7 +11,9 @@ public class CameraController : MonoBehaviour
     private Vector3 lastPlayerPosition;  
 
     //move camera by certain amount as player is moving 
-    private float distanceToMove; 
+    private float distanceToMove;
+
+    private GameState Gstate;
     
     void Start()
     {
@@ -21,6 +23,8 @@ public class CameraController : MonoBehaviour
         //last player position is position of where player is in that moment in time
         //grab xyz values of player (via playercontroller) and set them to lastplayerposition vector variable
         lastPlayerPosition = thePlayer.transform.position;
+
+        Gstate = GameObject.Find("GameState").GetComponent<GameState>();
     }
 
     // Update is called once per frame
