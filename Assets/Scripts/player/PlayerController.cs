@@ -95,6 +95,13 @@ public class PlayerController : MonoBehaviour
                 Debug.Log("am I instantiating acorn?");
             }
         }
+        else if (gameStageObj.status == GameState.State.Result)
+        {
+            //myRigidbody.constraints = RigidbodyConstraints2D.FreezePositionX;
+            myRigidbody.constraints = RigidbodyConstraints2D.FreezePositionY;
+            myCollider.enabled = false;
+            myRigidbody.velocity = new Vector2(moveSpeed * 2, myRigidbody.velocity.y);
+        }
         else
         {
             myRigidbody.constraints = RigidbodyConstraints2D.FreezePositionX;

@@ -30,16 +30,19 @@ public class CameraController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //difference between player position last time and it's current position 
-        distanceToMove = thePlayer.transform.position.x - lastPlayerPosition.x;  
+        if (Gstate.status == GameState.State.Playing)
+        {
+            //difference between player position last time and it's current position 
+            distanceToMove = thePlayer.transform.position.x - lastPlayerPosition.x;
 
-        //position of camera is set to new x position value listed up above^ 
-        transform.position = new Vector3(transform.position.x + distanceToMove, transform.position.y, transform.position.z);  
-        //we are solely adjusting x value of camera position (horizontally) not it's y or z values
-        //this is important for feel of following character 
+            //position of camera is set to new x position value listed up above^ 
+            transform.position = new Vector3(transform.position.x + distanceToMove, transform.position.y, transform.position.z);
+            //we are solely adjusting x value of camera position (horizontally) not it's y or z values
+            //this is important for feel of following character 
 
-        //last player position is position of where player is in that moment in time
-        //grab xyz values of player (via playercontroller) and set them to lastplayerposition vector variable
-        lastPlayerPosition = thePlayer.transform.position;
+            //last player position is position of where player is in that moment in time
+            //grab xyz values of player (via playercontroller) and set them to lastplayerposition vector variable
+            lastPlayerPosition = thePlayer.transform.position;
+        }
     }
 }

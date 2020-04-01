@@ -90,8 +90,8 @@ public class GameState : MonoBehaviour
 
     private void waterLevelRise(){
         float newY = waterLevelTop - ((Math.Abs(waterLevelBottom-waterLevelTop) * time / timeLimit ));
-        Debug.Log("waterLevelTop" + waterLevelTop.ToString() + "newY=" + newY.ToString());
-        Debug.Log("time=" + time.ToString() + " timeLimit=" + timeLimit.ToString());
+        //Debug.Log("waterLevelTop" + waterLevelTop.ToString() + "newY=" + newY.ToString());
+        //Debug.Log("time=" + time.ToString() + " timeLimit=" + timeLimit.ToString());
         waterLevel.transform.position = new Vector3(waterLevel.transform.position.x, newY, waterLevel.transform.position.z);
     }
 

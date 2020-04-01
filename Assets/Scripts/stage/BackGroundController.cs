@@ -11,6 +11,7 @@ public class BackGroundController : MonoBehaviour
     private int[] addedLayerNum = new int[6];
     public float[] layerMoveScale;
     public PlayerController PC;
+    private GameState Gstate;
 
     // Start is called before the first frame update
     void Start()
@@ -24,19 +25,24 @@ public class BackGroundController : MonoBehaviour
         {
             addBackground();
         }
+        Gstate = GameObject.Find("GameState").GetComponent<GameState>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P)) {
-            addBackground();
-        }
-        for(int i = 0; i < layerNUM; i++)
+        if (Gstate.status == GameState.State.Playing)
         {
-            if (!PC.stopped)
+            if (Input.GetKeyDown(KeyCode.P))
             {
-                layer[i].transform.Translate(layerMoveScale[i] * PC.moveSpeed / 4.0f, 0, 0);
+                addBackground();
+            }
+            for (int i = 0; i < layerNUM; i++)
+            {
+                if (!PC.stopped)
+                {
+                    layer[i].transform.Translate(layerMoveScale[i] * PC.moveSpeed / 4.0f, 0, 0);
+                }
             }
         }
     }
