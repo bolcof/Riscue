@@ -14,6 +14,9 @@ public class GameState : MonoBehaviour
     [SerializeField]
     public int palmScore;
 
+    [SerializeField]
+    public int risuScore;
+
     public State status = State.Playing;
 
     public GameObject resultPanel;

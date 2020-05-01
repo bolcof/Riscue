@@ -42,8 +42,10 @@ public class palmBehaviour : MonoBehaviour
             SR.enabled = false;
             isGrowing = true;
 
-            //callSquirrel(Random.Range(1,4));
-            callSquirrel(1);
+            int tmp = Random.Range(1, 4);
+            callSquirrel(tmp);
+            gameState.risuScore += tmp;
+            //callSquirrel(1);
 
             gameState.incrementPalmScore(1);
         
