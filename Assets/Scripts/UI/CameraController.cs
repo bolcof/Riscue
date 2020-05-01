@@ -44,5 +44,10 @@ public class CameraController : MonoBehaviour
             //grab xyz values of player (via playercontroller) and set them to lastplayerposition vector variable
             lastPlayerPosition = thePlayer.transform.position;
         }
+        else
+        {
+            this.transform.parent = thePlayer.transform;
+            this.transform.localPosition = new Vector3(this.transform.localPosition.x * 0.97f, this.transform.localPosition.y, this.transform.localPosition.z);
+        }
     }
 }

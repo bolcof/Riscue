@@ -30,6 +30,8 @@ public class PlayerController : MonoBehaviour
 
     public GameState gameStageObj;
 
+    private bool climbing, climbed;
+
     //public bool acornnum;
 
     void Start()
@@ -46,6 +48,8 @@ public class PlayerController : MonoBehaviour
         myAnimator.SetInteger("AcornNum", AcornNum);
 
         exPos = this.gameObject.transform.position.x;
+
+        climbing = climbed = false;
 
         gameStageObj = GameObject.Find("GameState").GetComponent<GameState>();
     }
@@ -65,9 +69,16 @@ public class PlayerController : MonoBehaviour
         //aka is player collider touching ground collider (different layers)  
         grounded = Physics2D.IsTouchingLayers(myCollider, whatIsGround);
 
-        //spit = 
-
-        if (gameStageObj.status == GameState.State.Playing && !myAnimator.GetCurrentAnimatorStateInfo(0).IsName("Player_fall"))
+        if (climbed)
+        {
+            myRigidbody.constraints = RigidbodyConstraints2D.FreezeAll;
+        }
+        else if (climbing)
+        {
+            myRigidbody.constraints = RigidbodyConstraints2D.FreezePositionX;
+            myRigidbody.velocity = new Vector2(0, moveSpeed);
+        }
+        else if (gameStageObj.status == GameState.State.Playing && !myAnimator.GetCurrentAnimatorStateInfo(0).IsName("Player_fall"))
         {
             myRigidbody.constraints = RigidbodyConstraints2D.None;
             myRigidbody.constraints = RigidbodyConstraints2D.FreezeRotation;
@@ -85,7 +96,6 @@ public class PlayerController : MonoBehaviour
                 }
             }
 
-
             if (Input.GetKeyDown(KeyCode.Space) && AcornNum > 0)
             {
                 myAnimator.SetBool("Spit", true);
@@ -99,8 +109,8 @@ public class PlayerController : MonoBehaviour
         {
             //myRigidbody.constraints = RigidbodyConstraints2D.FreezePositionX;
             myRigidbody.constraints = RigidbodyConstraints2D.FreezePositionY;
-            myCollider.enabled = false;
-            myRigidbody.velocity = new Vector2(moveSpeed * 2, myRigidbody.velocity.y);
+            myCollider.isTrigger = true;
+            myRigidbody.velocity = new Vector2(moveSpeed, myRigidbody.velocity.y);
         }
         else
         {
@@ -127,18 +137,35 @@ public class PlayerController : MonoBehaviour
 
     //Collecting Acorns 
     private void OnTriggerEnter2D(Collider2D other){
-        if(other.gameObject.CompareTag("Acorn")){
-            audioAcornCollect.Play(); 
-            Destroy(other.gameObject);
-            AcornNum++;
-            myAnimator.SetInteger("AcornNum", AcornNum);
-            //Update acorn score
-            gameStageObj.incrementAcornScore(1);
+
+        if (gameStageObj.status != GameState.State.Result)
+        {
+            if (other.gameObject.CompareTag("Acorn"))
+            {
+                audioAcornCollect.Play();
+                Destroy(other.gameObject);
+                AcornNum++;
+                myAnimator.SetInteger("AcornNum", AcornNum);
+                //Update acorn score
+                gameStageObj.incrementAcornScore(1);
+            }
+            if (other.gameObject.CompareTag("Hole"))
+            {
+                myAnimator.SetTrigger("Fallen");
+                this.transform.position = other.transform.position - new Vector3(0.25f, 0.0f, 1.0f);
+                Debug.Log("Am I hitting a hole?");
+            }
         }
-        if(other.gameObject.CompareTag("Hole")){
-            myAnimator.SetTrigger("Fallen");
-            this.transform.position = other.transform.position - new Vector3(0.25f, 0.0f, 1.0f);
-            Debug.Log("Am I hitting a hole?"); 
+
+        if(other.gameObject.name == "RootCol")
+        {
+            Debug.Log("climbing");
+            climbing = true;
+        }
+        else if(other.gameObject.name == "TopCol")
+        {
+            Debug.Log("climbed");
+            climbed = true;
         }
     }
 

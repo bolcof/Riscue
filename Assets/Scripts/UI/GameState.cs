@@ -36,9 +36,11 @@ public class GameState : MonoBehaviour
     public float waterLevelTop = -1.0f;
 
     [SerializeField]
-    private float time;
+    private float time = 29.0f;
 
     public GameObject[] SquirrelObjs = new GameObject[9];
+    public GameObject BigPalmTree;
+    public Sprite[] numbers = new Sprite[10];
 
     public enum State
     {
@@ -54,6 +56,7 @@ public class GameState : MonoBehaviour
         acornScoreText = GameObject.Find("AcornScore").GetComponent<Text>();
         palmScoreText = GameObject.Find("PalmScore").GetComponent<Text>();
         resultPanel = GameObject.Find("ResultPanel");
+        resultPanel.GetComponent<Animator>().SetBool("GoResult", false);
 
         timeText.text = timeLimit.ToString("f1");
         time = timeLimit;
@@ -129,12 +132,20 @@ public class GameState : MonoBehaviour
     public void GoResult()
     {
         Debug.Log("001");
-        Invoke("ResultAppear", 6.0f);
+        setScore();
+        Instantiate(BigPalmTree, GameObject.Find("Main Camera").transform.position + new Vector3(10.0f, 11.0f, 48.0f), Quaternion.identity);
+        callSquirrel(risuScore);
+        Invoke("ResultAppear", 10.0f);
     }
 
     public void ResultAppear()
     {
         Debug.Log("002");
         resultPanel.GetComponent<Animator>().SetBool("GoResult", true);
+    }
+
+    public void setScore() {
+        GameObject.Find("Root_10").GetComponent<Image>().sprite = numbers[risuScore / 10];
+        GameObject.Find("Root_1").GetComponent<Image>().sprite = numbers[risuScore % 10];
     }
 }

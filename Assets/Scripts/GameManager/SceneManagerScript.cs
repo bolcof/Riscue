@@ -38,7 +38,7 @@ public class SceneManagerScript : MonoBehaviour
 
     public void QuitGame(){
         Debug.Log("Quit Game");
-        Application.Quit(); 
+        Application.Quit();
     }
 
     public void Restart()
