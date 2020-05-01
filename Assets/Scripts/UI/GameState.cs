@@ -134,7 +134,7 @@ public class GameState : MonoBehaviour
         Debug.Log("001");
         setScore();
         Instantiate(BigPalmTree, GameObject.Find("Main Camera").transform.position + new Vector3(10.0f, 11.0f, 48.0f), Quaternion.identity);
-        callSquirrel(risuScore);
+        //callSquirrel(risuScore);
         Invoke("ResultAppear", 10.0f);
     }
 
