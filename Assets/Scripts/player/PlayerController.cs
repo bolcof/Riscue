@@ -136,7 +136,8 @@ public class PlayerController : MonoBehaviour
             gameStageObj.incrementAcornScore(1);
         }
         if(other.gameObject.CompareTag("Hole")){
-            myAnimator.SetTrigger("Fallen"); 
+            myAnimator.SetTrigger("Fallen");
+            this.transform.position = other.transform.position - new Vector3(0.25f, 0.0f, 1.0f);
             Debug.Log("Am I hitting a hole?"); 
         }
     }
