@@ -38,6 +38,8 @@ public class GameState : MonoBehaviour
     [SerializeField]
     private float time;
 
+    public GameObject[] SquirrelObjs = new GameObject[9];
+
     public enum State
     {
         Playing,
@@ -48,6 +50,11 @@ public class GameState : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        timeText = GameObject.Find("TimerScore").GetComponent<Text>();
+        acornScoreText = GameObject.Find("AcornScore").GetComponent<Text>();
+        palmScoreText = GameObject.Find("PalmScore").GetComponent<Text>();
+        resultPanel = GameObject.Find("ResultPanel");
+
         timeText.text = timeLimit.ToString("f1");
         time = timeLimit;
         waterLevel = GameObject.Find("water");
@@ -61,8 +68,6 @@ public class GameState : MonoBehaviour
         runTimer();
 
         waterLevelRise();
- 
-
     }
 
     public void incrementAcornScore(int score) {
@@ -82,13 +87,14 @@ public class GameState : MonoBehaviour
         else if(status == State.Result)
         {
             //リザルト
-            //
-            resultPanel.SetActive(true);
+            //GameObject.Find("Main Camera").GetComponent<Animator>().SetBool("GoResult", true);
+            //GameObject.Find("Player").GetComponent<Animator>().SetBool("GoResult", true);
         }
 
-        if (time <= 0.0f)
+        if (time <= 0.0f && status != State.Result)
         {
             time = 0.0f;
+            GoResult();
             status = State.Result;
         }
     }
@@ -101,9 +107,34 @@ public class GameState : MonoBehaviour
     }
 
 
+    private void callSquirrel(int num)
+    {
+        for (int i = 0; i < num; i++)
+        {
+            float seed = UnityEngine.Random.Range(0.0f, 1.0f);
+            int plmi;
+            if (seed < 0.5f) { plmi = -1; }
+            else { plmi = 1; }
 
-    // void OnGUI (){
-    //     GUI.Box(new Rect(Screen.width/2 + sizeX/2, offsetY, sizeX, sizeY), " " + currentScore); 
+            float posX = GameObject.Find("Main Camera").transform.position.x + UnityEngine.Random.Range(9.0f, 11.0f) * plmi;
+            GameObject SqlObj = Instantiate(SquirrelObjs[UnityEngine.Random.Range(0,10)], new Vector3(posX, this.gameObject.transform.position.y, -5.0f), Quaternion.identity);
+            if (plmi == -1)
+            {
+                SqlObj.GetComponent<SquirrelBehaviour>().flip = true;
+            }
+            SqlObj.GetComponent<SquirrelBehaviour>().targetPalmTree = this.gameObject;
+        }
+    }
 
-    // }
+    public void GoResult()
+    {
+        Debug.Log("001");
+        Invoke("ResultAppear", 6.0f);
+    }
+
+    public void ResultAppear()
+    {
+        Debug.Log("002");
+        resultPanel.GetComponent<Animator>().SetBool("GoResult", true);
+    }
 }

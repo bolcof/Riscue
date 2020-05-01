@@ -15,7 +15,7 @@ public class SceneManagerScript : MonoBehaviour
     {
         if(Input.GetMouseButtonDown(0))
         {
-            LoadNextStage();
+            //LoadNextStage();
         }
 
     }
