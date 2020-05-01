@@ -81,6 +81,8 @@ public class GameState : MonoBehaviour
         }
         else if(status == State.Result)
         {
+            //リザルト
+            //
             resultPanel.SetActive(true);
         }
 
