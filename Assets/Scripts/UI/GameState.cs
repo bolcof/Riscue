@@ -136,6 +136,7 @@ public class GameState : MonoBehaviour
         Instantiate(BigPalmTree, GameObject.Find("Main Camera").transform.position + new Vector3(10.0f, 11.0f, 48.0f), Quaternion.identity);
         //callSquirrel(risuScore);
         Invoke("ResultAppear", 10.0f);
+        this.gameObject.GetComponent<AudioSource>().Play();
     }
 
     public void ResultAppear()
